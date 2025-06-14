@@ -31,8 +31,11 @@ for i, filename in enumerate(filenames):
 
     elif filename.endswith('jpg') or filename.endswith('jpeg'):
         exif_dict = {'Exif': {piexif.ExifIFD.DateTimeOriginal: get_date(filename)}}
+        exif_creation = {'Exif': {piexif.ExifIFD.DateTimeDigitized: get_date(filename)}}
         exif_bytes = piexif.dump(exif_dict)
+        exif_creation_bytes = piexif.dump(exif_creation)
         piexif.insert(exif_bytes, folder + filename)
+        piexif.insert(exif_creation_bytes, folder + filename)
 
     num_digits = len(str(num_files))
     print("{num:{width}}/{max} - {filename}"
