@@ -5,7 +5,7 @@ import re
 import os
 import time
 
-folder = './images'
+folder = './images/'
 
 def get_datetime(filename):
     date_str = filename.split('-')[1]
